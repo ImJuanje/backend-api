@@ -3,10 +3,14 @@ dotenv.config()
 console.log('URI:', process.env.MONGODB_URI) 
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 
 
 const app = express()
+app.use(cors({
+  origin: 'http://localhost:5173' // solo acepta peticiones desde tu React
+}))
 app.use(express.json())
 
 // Conexión a MongoDB
